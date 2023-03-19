@@ -9,7 +9,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Solution {
-
+    // https://www.acmicpc.net/problem/2606
     public static int[][] map;
     public static boolean[] visited;
     public static int sum;

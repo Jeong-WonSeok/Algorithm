@@ -13,7 +13,7 @@ public class Solution1_Matrix {
     public static boolean[] visited;
 
     public static void main(String[] args) throws IOException {
-
+        // https://www.acmicpc.net/problem/1260
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken()); // 정점의 개수
