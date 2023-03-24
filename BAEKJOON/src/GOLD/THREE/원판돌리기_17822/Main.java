@@ -41,13 +41,15 @@ public class Main {
             xdk[i][1] = Integer.parseInt(st.nextToken());
             xdk[i][2] = Integer.parseInt(st.nextToken());
         }
-
-        for(int i = 0; i < N;i++)
+        for(int i = 0 ; i < N;i++){
             System.out.println(stencil.get(i).toString());
+        }
         System.out.println();
 
         for(int t = 0 ; t < T; t++) {
-            for (int i = xdk[t][0]-1; i <= N; i = i + xdk[t][0]) {
+            
+            for (int i = xdk[t][0]-1; i < N; i = i + xdk[t][0]) {
+                System.out.println("x: " + i);
                 // d=0 이면 시계방향으로 회전시킨다.
                 if (xdk[t][1] == 1) {
                     //k만큼 회전 시킨다.
@@ -59,16 +61,21 @@ public class Main {
                 }
                 // d=1 이면 반시계방향으로 회전시킨다.
                 else {
+                    System.out.println(stencil.get(i).toString());
                     for (int j = 0; j < xdk[t][2]; j++) {
+                        System.out.println(j);
                         //가장 뒤에 있는 숫자를 앞으로 보낸다.
                         int num = stencil.get(i).pollLast();
+                        System.out.println("넘어옴");
                         stencil.get(i).addFirst(num);
+                        System.out.println(stencil.get(i).toString());
                     }
                 }
+                System.out.println("11111111111111");
             }
 
             // 회전을 다 시키면 map을 업데이트 시킨다.
-            for(int i = xdk[t][0]-1 ; i <= N; i = i + xdk[t][0]){
+            for(int i = xdk[t][0]-1 ; i < N; i = i + xdk[t][0]){
                 for(int j = 0; j < M; j++){
                     int  temp = stencil.get(i).pollFirst();
                     map[i][j] = temp;
@@ -77,11 +84,25 @@ public class Main {
             }
 
             System.out.println(t+"/////////////////");
+            System.out.println("deque");
+            for(int i = 0 ; i < N; i++){
+                System.out.println(stencil.get(i).toString());
+            }
+            System.out.println();
             for(int i = 0 ; i < N; i++){
                 System.out.println(Arrays.toString(map[i]));
             }
             delete();
+
             System.out.println();
+
+            for(int i = 0 ; i < N; i++){
+                stencil.get(i).clear();
+                for(int j = 0 ; j < M; j++){
+                    stencil.get(i).add(map[i][j]);
+                }
+            }
+
         }
         int sum = 0;
         for(int i = 0 ; i < N; i++){
@@ -96,13 +117,13 @@ public class Main {
 
     private static void delete() {
         int[][] clone = new int[N][M];
-        for(int i = 0; i < M; i++) {
+        for(int i = 0; i < N; i++) {
             clone[i] = map[i].clone();
         }
 
         boolean check = false;
-        int sum = 0;
-        int cnt = 0;
+        float sum = 0;
+        float cnt = 0;
         for(int i = 0 ; i < N; i++){
             for(int j = 0; j < M; j++){
                 int r = i;
@@ -114,10 +135,14 @@ public class Main {
                 for(int d = 0; d < 4; d++){
                     int nr = r + dr[d];
                     int nc = c + dc[d];
-                    if(nr < 0 || nr >= N || nc < 0 || nc >= M) continue;
-                    //##########################
-                    //여기 왼쪽으로갈때 -1도 해줘야댐
-                    //##########################
+                    if(nr < 0 || nr >= N) continue;
+
+                    if(nc < 0){
+                        nc = M-1;
+                    }else if( nc >= M){
+                        nc = 0;
+                    }
+
                     if(num == map[nr][nc] && num != 0){
                         System.out.println(r + " " + c + " " + map[r][c]);
                         System.out.println("next " + nr + " " + nc + " " + map[nr][nc]);
@@ -131,7 +156,7 @@ public class Main {
         }
 
         if(!check){
-            int avg = sum / cnt;
+            float avg = sum / cnt;
             for(int i = 0 ; i < N; i++){
                 for(int j = 0; j < M; j++){
                     if(clone[i][j] != 0) {
