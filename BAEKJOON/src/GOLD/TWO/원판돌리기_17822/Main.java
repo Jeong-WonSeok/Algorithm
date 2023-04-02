@@ -1,4 +1,4 @@
-package GOLD.THREE.원판돌리기_17822;
+package GOLD.TWO.원판돌리기_17822;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -41,16 +41,11 @@ public class Main {
             xdk[i][1] = Integer.parseInt(st.nextToken());
             xdk[i][2] = Integer.parseInt(st.nextToken());
         }
-        for(int i = 0 ; i < N;i++){
-            System.out.println(stencil.get(i).toString());
-        }
-        System.out.println();
 
         for(int t = 0 ; t < T; t++) {
             
             for (int i = xdk[t][0]-1; i < N; i = i + xdk[t][0]) {
-                System.out.println("x: " + i);
-                // d=0 이면 시계방향으로 회전시킨다.
+                // d=1 이면 반시계방향으로 회전시킨다.
                 if (xdk[t][1] == 1) {
                     //k만큼 회전 시킨다.
                     for (int j = 0; j < xdk[t][2]; j++) {
@@ -59,19 +54,14 @@ public class Main {
                         stencil.get(i).addLast(num);
                     }
                 }
-                // d=1 이면 반시계방향으로 회전시킨다.
+                // d=0 이면 시계방향으로 회전시킨다.
                 else {
-                    System.out.println(stencil.get(i).toString());
                     for (int j = 0; j < xdk[t][2]; j++) {
-                        System.out.println(j);
                         //가장 뒤에 있는 숫자를 앞으로 보낸다.
                         int num = stencil.get(i).pollLast();
-                        System.out.println("넘어옴");
                         stencil.get(i).addFirst(num);
-                        System.out.println(stencil.get(i).toString());
                     }
                 }
-                System.out.println("11111111111111");
             }
 
             // 회전을 다 시키면 map을 업데이트 시킨다.
@@ -83,18 +73,8 @@ public class Main {
                 }
             }
 
-            System.out.println(t+"/////////////////");
-            System.out.println("deque");
-            for(int i = 0 ; i < N; i++){
-                System.out.println(stencil.get(i).toString());
-            }
-            System.out.println();
-            for(int i = 0 ; i < N; i++){
-                System.out.println(Arrays.toString(map[i]));
-            }
             delete();
 
-            System.out.println();
 
             for(int i = 0 ; i < N; i++){
                 stencil.get(i).clear();
@@ -104,6 +84,7 @@ public class Main {
             }
 
         }
+
         int sum = 0;
         for(int i = 0 ; i < N; i++){
             for(int j = 0 ; j < M; j++){
@@ -115,15 +96,20 @@ public class Main {
 
     }
 
+    // 삭제
     private static void delete() {
         int[][] clone = new int[N][M];
+        // map을 복사하여 혹시 모를 변수를 차단한다.
         for(int i = 0; i < N; i++) {
             clone[i] = map[i].clone();
         }
 
+        // 합과 카운트를 변수로 두고
+        // 지워진적이 있음을 확인하기 위한 변수를 만든다.
         boolean check = false;
         float sum = 0;
         float cnt = 0;
+
         for(int i = 0 ; i < N; i++){
             for(int j = 0; j < M; j++){
                 int r = i;
@@ -132,20 +118,22 @@ public class Main {
                 sum += map[r][c];
                 if( map[r][c] != 0) cnt++;
 
+                //4방 탐색
                 for(int d = 0; d < 4; d++){
                     int nr = r + dr[d];
                     int nc = c + dc[d];
                     if(nr < 0 || nr >= N) continue;
 
+                    // 만약 nc가 0보다 작아지면 M-1의 값으로 바꾸고
+                    // nc가 M-1보다 커지면 0으로 값을 바꾼다.
                     if(nc < 0){
                         nc = M-1;
                     }else if( nc >= M){
                         nc = 0;
                     }
 
+                    // 사방탐색중 같은 숫자가 있으면 그 위치를 0으로 바꿔준다.
                     if(num == map[nr][nc] && num != 0){
-                        System.out.println(r + " " + c + " " + map[r][c]);
-                        System.out.println("next " + nr + " " + nc + " " + map[nr][nc]);
                         check = true;
                         clone[nr][nc] = 0;
                         clone[r][c] = 0;
@@ -155,6 +143,8 @@ public class Main {
             }
         }
 
+        // 만약 지워진 적이 없으면 평균을 구한다음
+        // 평균보다 작으면 +1을 크면 -1을 해준다.
         if(!check){
             float avg = sum / cnt;
             for(int i = 0 ; i < N; i++){
@@ -168,7 +158,6 @@ public class Main {
         }
 
         for(int i = 0 ; i < N; i++){
-            System.out.println(Arrays.toString(clone[i]));
             map[i] = clone[i].clone();
         }
     }
