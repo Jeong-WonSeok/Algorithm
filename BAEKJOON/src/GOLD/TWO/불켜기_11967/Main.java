@@ -77,7 +77,6 @@ public class Main {
 
         boolean Check = false;
 
-        //
         // 불킨적 없을 때 까지 BFS 반복
         while(!que.isEmpty()){
             Room loc = que.poll();
@@ -101,6 +100,7 @@ public class Main {
             }
         }
 
+        // 불 하나라도 켰으면 0,0 부터 BFS 탐색. 이미 지나온 방 중 이어질 수 있으므로
         if(Check){
             count += bfs();
         }
