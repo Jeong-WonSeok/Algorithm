@@ -33,11 +33,12 @@ public class Main {
     }
 
     static long joi(int l, int r){
+
         // 왼쪽과 오른쪽이 만난다면 dp의 값은 0으로 저장
         if( goRight(r) == l) return dp[l][r] = 0;
 
         // 이미 갱신이 된 상태라면
-        if (dp[l][r] != -1)    return dp[l][r];
+        if (dp[l][r] != -1)  return dp[l][r];
 
         // 왼쪽으로 진행했을 때의 값과 오른쪽으로 진행했을 때의 값을 구함
         long leftSum = arr[goLeft(l)] + ioi(goLeft(l), r);

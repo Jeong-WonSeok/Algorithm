@@ -1,20 +1,13 @@
 package GOLD.ONE.다리만들기2_17472;
 
-import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
-import java.util.StringTokenizer;
 
 public class Main {
 
@@ -89,10 +82,6 @@ public class Main {
             }
 
         }
-//
-//		for (int i = 0; i < N; i++) {
-//			System.out.println(Arrays.toString(map[i]));
-//		}
 
         linked = new boolean[cnt + 1];
         list = new ArrayList[cnt + 1];
@@ -106,16 +95,7 @@ public class Main {
             link(pos);
         }
 
-//		while(!pq.isEmpty()) {
-//			System.out.println(pq.poll());
-//		}
-//		for (ArrayList l : list) {
-//			System.out.println(l.toString());
-//		}
-//		if(pq.size() == 0) {
-//			System.out.println(-1);
-//			System.exit(1);
-//		}
+
         list[0].add(new Node(1, 0));
         prim();
 
