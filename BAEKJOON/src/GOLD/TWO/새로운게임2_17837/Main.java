@@ -65,11 +65,11 @@ public class Main {
             for(int i = 0; i < K; i++){
                 System.out.println("idx " + i + " x " + index[i].x + " y " +index[i].y);
             }
-            System.out.println();
+            System.out.println(isEnd);
             if(isEnd) {
                 break;
             }
-            if(turn >= 1000) {
+            if(turn >= 10) {
                 turn = -1;
                 break;
             }
@@ -105,15 +105,16 @@ public class Main {
     static private boolean goRed(chessPiece cur, int nx, int ny, int idx){
         int cx = cur.x;
         int cy = cur.y;
-        //현재 인덱스의 차례가 될 때까지 진행X
-        boolean check = false;
+
+        //현재 인덱스의 차례가 될 때까지만 진행
         int size = piece[cy][cx].size();
-        for(int i = 0; i < size; i++) {
+        loop : for(int i = 0; i < size; i++) {
             chessPiece temp = piece[cy][cx].pollLast();
-            if(temp.idx == idx ) check = true;
-            if(!check) {
-                piece[cy][cx].offer(temp);
-                continue;
+            if(temp.idx == idx ) {
+                piece[ny][nx].offer(new chessPiece(nx, ny, cur.dir, temp.idx));
+                index[temp.idx] = new chessPiece(nx,ny, cur.dir, temp.idx);
+
+                break loop;
             }
             piece[ny][nx].offer(new chessPiece(nx, ny, temp.dir, temp.idx));
             index[temp.idx] = new chessPiece(nx,ny, temp.dir, temp.idx);
@@ -135,8 +136,13 @@ public class Main {
         boolean check = false;
         int size = piece[cy][cx].size();
         for(int i = 0; i < size; i++) {
-            chessPiece temp = piece[cy][cx].poll();
-            if(temp.idx == idx ) check = true;
+            chessPiece temp = piece[cy][cx].pollFirst();
+            if(temp.idx == idx ) {
+                piece[ny][nx].offer(new chessPiece(nx, ny, cur.dir, temp.idx));
+                index[temp.idx] = new chessPiece(nx,ny, cur.dir, temp.idx);
+                check = true;
+                continue;
+            }
             if(!check) {
                 piece[cy][cx].offer(temp);
                 continue;
@@ -155,35 +161,19 @@ public class Main {
     // 이동하는 곳이 파란색, 경계 밖일 경우
     // 반대방향으로 한칸 이동한다.(만약 바꾸고도 파란색일 경우 이동 하지 않는다.)
     static private void goBlue(chessPiece cur, int nx, int ny, int idx){
-        int cx = cur.x;
-        int cy = cur.y;
-        boolean check = false;
-        int size = piece[cy][cx].size();
-        for(int i = 0; i < size; i++){
-            chessPiece temp = piece[cy][cx].poll();
-            if(temp.idx == idx ) check = true;
-            if(!check) {
-                piece[cy][cx].offer(temp);
-                continue;
-            }
-            int curDir = 0;
-            if(temp.dir == 1 || temp.dir == 3) curDir = temp.dir + 1;
-            else curDir = temp.dir - 1;
-            nx = temp.x + dx[curDir];
-            ny = temp.y + dy[curDir];
+        int curDir = 0;
+        if(cur.dir == 1 || cur.dir == 3) curDir = cur.dir + 1;
+        else curDir = cur.dir - 1;
 
-            if( nx < 0 || nx >= N || ny < 0 || ny >= N || map[nx][ny] == 2){
-                piece[cy][cx].offer(new chessPiece(nx, ny, curDir, temp.idx));
-                continue;
-            }
-            if(map[nx][ny] == 1){
-                goRed(new chessPiece(temp.x,temp.y,curDir, temp.idx), nx, ny, temp.idx);
-            }else {
-                goBlue(new chessPiece(temp.x,temp.y,curDir, temp.idx), nx, ny, temp.idx);
-            }
+        ny = cur.y + dy[curDir];
+        nx = cur.x + dx[curDir];
+        if(nx < 0 || nx >= N || ny < 0 || ny >= N || map[ny][nx] == 2) return;
 
+        if(map[ny][nx] == 0){
+            goWhite(new chessPiece(cur.x, cur.y, curDir, idx), nx, ny, idx);
+        }else {
+            goRed(new chessPiece(cur.x, cur.y, curDir, idx), nx, ny, idx);
         }
-
     }
 
 
