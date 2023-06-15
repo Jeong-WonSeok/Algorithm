@@ -32,12 +32,11 @@ public class Main {
         for (int i = 0; i < 10; i++) {
             dice[i] = Integer.parseInt(st.nextToken());
         }
-
         per(0);
         System.out.println(result);
 
     }
-
+    // 중복 순열을 통하여 말의 순서를 정한다.
     private static void per(int cnt) {
         if (cnt == 10) {
             Game();
@@ -113,7 +112,7 @@ public class Main {
         if(curLoc < 21) {
             if (nextLoc >= 21) return true;
         }
-            // 지름길 15번 루트 이용
+            // 지름길 5번 루트 이용
         else if(curLoc < 30) {
             if (nextLoc >= 30)
                 return true;
@@ -123,7 +122,7 @@ public class Main {
             if(nextLoc >= 38)
                 return true;
         }
-            //지름길 5번 루트 이용
+            //지름길 15번 루트 이용
         else if(curLoc < 47){
             if(nextLoc >= 47)
                 return true;
