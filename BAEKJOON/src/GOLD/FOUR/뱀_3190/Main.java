@@ -56,12 +56,14 @@ public class Main {
         snakeMap[0][0] = true;
 
         while(true){
+            // turn 횟수를
+            // 만약 더 이상 방향전환이 없다면 -1 입력
             int turnS = turn.isEmpty() ? -1 : Integer.parseInt(turn.peek());
             // 회전
-//            System.out.println("현재 뱀 머리 : " + y + " " + x);
-//            System.out.println("cnt :" + cnt);
+
+            // 만약 cnt 와 방향 전환하는 턴이 같다면 방향 전환
             if(turnS == cnt){
-//                System.out.println("*******************");
+
                 turn.poll();
                 char cDir = turn.poll().charAt(0);
                 if(cDir == 'D'){
@@ -74,9 +76,7 @@ public class Main {
             x = x + dx[dir];
 
             if(!move(y,x)) break;
-//            for(int i = 0; i < n; i++){
-//                System.out.println(Arrays.toString(snakeMap[i]));
-//            }
+
             cnt++;
         }
 
@@ -92,6 +92,8 @@ public class Main {
 //        System.out.println("head " + ny + " " + nx );
 //        System.out.println("tale " + taleY + " " + taleY);
 //        System.out.println(snake.toString());
+        // 사과를 발견했을 때 꼬리를 추가(위에서 poll을 했기 때문에)
+        // 머리를 추가(사과를 먹었기 때문에)
         if(map[ny][nx] == 1){
             snake.offerFirst(taleX);
             snake.offerFirst(taleY);
@@ -106,6 +108,8 @@ public class Main {
 //            System.out.println("만났다");
             return false;
         }
+        // 위의 경우들이 아니면 그냥 한칸 진행
+        // 꼬리를 없애고 머리를 추가
         else{
             snakeMap[taleY][taleX] = false;
             snake.offer(ny);
@@ -113,7 +117,6 @@ public class Main {
             snakeMap[ny][nx] = true;
         }
 
-        //꼬리에 추가
         return true;
     }
 }
