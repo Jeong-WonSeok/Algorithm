@@ -68,16 +68,19 @@ public class Main {
             }
         }
 
-
+        // copy할 map
         int tempMap[][] = new int[R][C];
         tempMap[top][0] = -1;
         tempMap[bot][0] = -1;
+
 
         while(!dustLoc.isEmpty()){
             int cr = dustLoc.poll();
             int cc = dustLoc.poll();
             int dust = map[cr][cc];
             int cnt = 0;
+
+            // 4방 탐색을 통하여 미세먼지 퍼트리기
             for(int i = 0 ; i < 4; i++){
                 int nr = cr + dr[i];
                 int nc = cc + dc[i];
