@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
+// *****미완*****
 public class Main {
 
     static int H, K, R;
