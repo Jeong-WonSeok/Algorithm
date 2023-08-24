@@ -10,13 +10,13 @@ public class Main {
         String result = solution(3, 3, 1, 2, 3, 3, 4);
         System.out.println(result);
     }
-
     static int[][] map;
-    static char[] dir = {'r', 'd', 'u', 'l'};
-    static int[] dr = {0, 1, -1, 0};
-    static int[] dc = {1, 0, 0, -1};
+    static char[] dir = {'d', 'l', 'r', 'u'};
+    static int[] dr = {1, 0, 0, -1};
+    static int[] dc = {0, -1, 1, 0};
     static ArrayList<String> wordList;
     static int K, N, M;
+
     static public String solution(int n, int m, int x, int y, int r, int c, int k) {
         String answer = "";
         map = new int[n+1][m+1];
@@ -27,36 +27,35 @@ public class Main {
         K = k;
         N = n;
         M = m;
-        boolean[][] visited = new boolean[n+1][m+1];
         wordList = new ArrayList<>();
 
-        dfs(x, y, r, c, 0, "", visited);
-        Collections.sort(wordList);
-        System.out.println(wordList.toString());
+
+        // Collections.sort(wordList);
+        int distance = distance(x, y, r, c);
+        if (distance > k || (k - distance) % 2 == 1) return "impossible";
+
+        dfs(x, y, r, c, 0, "");
 
         if (wordList.size() == 0){
             answer = "impossible";
         }else {
             answer = wordList.get(0);
         }
-
         return answer;
     }
 
-    private static void dfs(int x, int y, int r, int c, int cnt, String word, boolean[][] visited) {
-        System.out.println(x + " " + y + " " + word + " " + cnt);
-        if(cnt > K) {
-            System.out.println("넘어감");
-            return;
-        }
+    private static int distance(int x, int y, int r, int c){
+        return Math.abs(x - r) + Math.abs(y - c);
+    }
 
-        if (x == r && y == c) {
-            System.out.println("check");
-            if (K == cnt) {
-                System.out.println("들어옴");
+    private static void dfs(int x, int y, int r, int c, int cnt, String word) {
+        if(wordList.size() > 0) return;
+        if(cnt + distance(x, y, r, c) > K) return;
+        if (K == cnt) {
+            if (x == r && y == c) {
                 wordList.add(word);
-                return;
             }
+            return;
         }
 
         for(int d = 0; d < 4; d++){
@@ -65,10 +64,7 @@ public class Main {
             if(nx <= 0 || ny <= 0 || nx > N || ny > M) continue;
 
             word += dir[d];
-            visited[nx][ny] = true;
-            dfs(nx, ny, r, c, ++cnt, word, visited);
-            cnt--;
-            visited[nx][ny] = false;
+            dfs(nx, ny, r, c, cnt + 1, word);
             word = word.substring(0, (word.length()-1));
         }
     }
