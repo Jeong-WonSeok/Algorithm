@@ -2,6 +2,8 @@ package LV3.표병합;
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
+        int[][] arr = new int[][]{{45, 50, 74}, {89}};
+        System.out.println(arr[1].length);
 
     }
     class table{
