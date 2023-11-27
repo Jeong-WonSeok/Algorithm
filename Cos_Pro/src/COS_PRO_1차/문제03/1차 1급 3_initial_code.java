@@ -1,4 +1,4 @@
-// You may use import as below.
+package COS_PRO_1차.문제03;// You may use import as below.
 //import java.util.*;
 
 class Solution {

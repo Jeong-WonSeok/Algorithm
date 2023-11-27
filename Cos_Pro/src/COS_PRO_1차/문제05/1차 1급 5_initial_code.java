@@ -1,3 +1,4 @@
+package COS_PRO_1차.문제05;
 import java.util.*;
 
 class Solution {

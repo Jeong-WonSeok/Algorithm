@@ -1,3 +1,5 @@
+package COS_PRO_1차.문제06;
+
 class Solution{
     public int func(int record){
         if(record == 0) return 1;
