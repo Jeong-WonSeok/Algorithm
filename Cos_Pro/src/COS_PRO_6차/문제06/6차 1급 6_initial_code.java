@@ -1,3 +1,4 @@
+package COS_PRO_6차.문제06;
 class Solution {
     public int solution(int[][] grid) {
         int answer = 0;

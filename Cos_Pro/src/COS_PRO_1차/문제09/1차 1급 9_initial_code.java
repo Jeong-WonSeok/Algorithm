@@ -3,7 +3,7 @@ package COS_PRO_1차.문제09;
 class Solution {
     public String func_a(String str, int len){
         String padZero = "";
-        int padSize = @@@;
+        int padSize = 0;//###
         for(int i = 0; i < padSize; i++)
             padZero += "0";
         return padZero + str;
@@ -16,7 +16,7 @@ class Solution {
         
         int hammingDistance = 0;
         for(int i = 0; i < maxLength; i++)
-            if(@@@)
+            if(true/*###*/)
                 hammingDistance += 1;
         return hammingDistance;
     }

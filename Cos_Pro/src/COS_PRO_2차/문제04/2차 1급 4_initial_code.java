@@ -1,4 +1,6 @@
 // 다음과 같이 import를 사용할 수 있습니다.
+package COS_PRO_2차.문제04;
+
 import java.util.*;
 
 class Solution {

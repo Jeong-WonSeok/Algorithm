@@ -1,3 +1,5 @@
+package COS_PRO_2차.문제10;
+
 class Solution {
     public String solution(String s) {
         s += '#';

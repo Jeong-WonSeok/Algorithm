@@ -1,3 +1,5 @@
+package COS_PRO_2차.문제05;
+
 // 다음과 같이 import를 사용할 수 있습니다.
 import java.util.*;
 
