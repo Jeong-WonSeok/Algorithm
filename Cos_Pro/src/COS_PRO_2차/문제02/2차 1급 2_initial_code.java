@@ -1,3 +1,4 @@
+//package COS_PRO_2차.문제02;
 //class Solution {
 //    public int func_a(String times){
 //        int hour = Integer.parseInt(times.substring(0, 2));

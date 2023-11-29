@@ -9,6 +9,8 @@ class Solution {
         }
         int maxVal = 0;
         int cnt = 0;
+
+        System.out.println(Arrays.toString(voteCounter));
         for (int i = 1; i <= N; i++) {
             if (maxVal < voteCounter[i]) {
                 maxVal = voteCounter[i];
@@ -18,10 +20,11 @@ class Solution {
                 cnt += 1;
             }
         }
+        System.out.println(maxVal + " " + cnt);
         int answer[] = new int[cnt];
         for (int i = 1, idx = 0; i <= N; i++){
             if (voteCounter[i] == maxVal) {
-                answer[idx] = voteCounter[i];
+                answer[idx] = i;
                 idx += 1;
             }
         }

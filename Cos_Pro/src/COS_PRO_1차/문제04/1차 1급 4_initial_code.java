@@ -9,15 +9,20 @@ class Solution {
         int arrB_len = arrB.length;
         int answer[] = new int[arrA_len + arrB_len];
         int answer_idx = 0;
-        while(@@@){
-            if(arrA[arrA_idx] < arrB[arrB_idx])
+        System.out.println(Arrays.toString(arrA));
+        System.out.println(Arrays.toString(arrB));
+        while(arrA_idx < arrA_len && arrB_idx < arrB_len){
+            if(arrA[arrA_idx] < arrB[arrB_idx]) {
                 answer[answer_idx++] = arrA[arrA_idx++];
-            else
+            }
+            else {
                 answer[answer_idx++] = arrB[arrB_idx++];
+            }
         }
-        while(@@@)
+
+        while(arrA_idx < arrA_len)
             answer[answer_idx++] = arrA[arrA_idx++];
-        while(@@@)
+        while(arrB_idx < arrB_len)
             answer[answer_idx++] = arrB[arrB_idx++];
         return answer;
     }
