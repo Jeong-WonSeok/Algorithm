@@ -1,3 +1,4 @@
+package COS_PRO_4차.문제01;
 import java.util.*;
 
 public class Solution {

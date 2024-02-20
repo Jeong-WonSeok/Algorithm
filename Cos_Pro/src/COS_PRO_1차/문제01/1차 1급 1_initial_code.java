@@ -1,11 +1,26 @@
-package COS_PRO_1차.문제01;// You may use import as below.
+package COS_PRO_1차.문제01;
+// You may use import as below.
 //import java.util.*;
 
 class Solution {
     public long solution(long num) {
         // Write code here.
         long answer = 0;
+<<<<<<< HEAD
 
+=======
+        num++;
+        int cnt = 0;
+        while(num / 10 != 0){
+
+            long div = num / 10;
+            long remain = num % 10;
+
+            answer += Math.pow(10, cnt) * remain;
+            num /= 10;
+            cnt++;
+        }
+>>>>>>> 25f00ad5b9ac28bb82a11868e915508cf99d0fe9
         return answer;
     }
 

@@ -1,10 +1,13 @@
 // 다음과 같이 import를 사용할 수 있습니다.
+package COS_PRO_2차.문제04;
+
 import java.util.*;
 
 class Solution {
     public int solution(int[] arr, int K) {
         // 여기에 코드를 작성해주세요.
         int answer = 0;
+
         return answer;
     }
 

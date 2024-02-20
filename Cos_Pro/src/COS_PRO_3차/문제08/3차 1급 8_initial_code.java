@@ -1,3 +1,4 @@
+package COS_PRO_3차.문제08;
 class Solution {
     public int solution(int k, int[] student) {
         int answer = 0;

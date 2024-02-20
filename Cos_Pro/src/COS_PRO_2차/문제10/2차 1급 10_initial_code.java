@@ -1,3 +1,5 @@
+package COS_PRO_2차.문제10;
+
 class Solution {
     public String solution(String s) {
         s += '#';
@@ -5,7 +7,7 @@ class Solution {
         for(int i = 0; i < s.length(); ++i){
             if (s.charAt(i) == '0' && s.charAt(i+1) != '0')
                 answer += "0";
-            else
+            else if(s.charAt(i) != '0')
                 answer += "1";
         }
         return answer;

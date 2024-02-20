@@ -1,3 +1,4 @@
+package COS_PRO_6차.문제05;
 class Solution {
     public int solution(int[][] board) {
         int answer = 0;

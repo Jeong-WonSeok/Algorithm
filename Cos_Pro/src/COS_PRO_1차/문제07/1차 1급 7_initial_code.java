@@ -7,7 +7,7 @@ class Solution{
         int answer = -INF;
         for(int price : prices){
             if(tmp != INF)
-                answer = Math.max(answer, tmp - price);
+                answer = Math.max(answer, price - tmp);
             tmp = Math.min(tmp, price);
         }
         return answer;

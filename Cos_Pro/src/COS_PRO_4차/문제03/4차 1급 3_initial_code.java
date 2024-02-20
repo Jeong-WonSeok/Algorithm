@@ -1,3 +1,4 @@
+package COS_PRO_4차.문제03;
 class Solution {
     public long solution(int oneDayPrice, int multiDay, int multiDayPrice, long n){
         if(oneDayPrice * multiDay <= multiDayPrice)

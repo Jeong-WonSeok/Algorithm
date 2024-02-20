@@ -5,7 +5,7 @@ class Solution {
         public int firstNum;
         public int secondNum;
     }
-    
+
     public int func_a(int numA, int numB, char exp){
         if (exp == '+')
             return numA + numB;
@@ -14,7 +14,7 @@ class Solution {
         else
             return numA * numB;
     }
-    
+
     public int func_b(String exp){
         for(int i = 0; i < exp.length(); i++){
             char e = exp.charAt(i);
@@ -29,11 +29,11 @@ class Solution {
         ret.secondNum = Integer.parseInt(exp.substring(idx + 1));
         return ret;
     }
-    
+
     public int solution(String expression) {
-        int expIndex = func_@@@(@@@);
-        Pair numbers = func_@@@(@@@);
-        int result = func_@@@(@@@);
+        int expIndex = func_b(expression);
+        Pair numbers = func_c(expression, expIndex);
+        int result = func_a(numbers.firstNum, numbers.secondNum, expression.charAt(expIndex));
         return result;
     }
 
@@ -43,7 +43,7 @@ class Solution {
         String expression = "123+12";
         int ret = sol.solution(expression);
 
-        // Press Run button to receive output. 
+        // Press Run button to receive output.
         System.out.println("Solution: return value of the method is " + ret + " .");
     }
 }

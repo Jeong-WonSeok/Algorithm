@@ -3,7 +3,7 @@ package COS_PRO_1차.문제09;
 class Solution {
     public String func_a(String str, int len){
         String padZero = "";
-        int padSize = @@@;
+        int padSize = len-str.length();
         for(int i = 0; i < padSize; i++)
             padZero += "0";
         return padZero + str;
@@ -13,10 +13,10 @@ class Solution {
         int maxLength = Math.max(binaryA.length(), binaryB.length());
         binaryA = func_a(binaryA, maxLength);
         binaryB = func_a(binaryB, maxLength);
-        
+        System.out.println(binaryA +" \n" + binaryB);
         int hammingDistance = 0;
         for(int i = 0; i < maxLength; i++)
-            if(@@@)
+            if(binaryA.charAt(i) != binaryB.charAt(i))
                 hammingDistance += 1;
         return hammingDistance;
     }

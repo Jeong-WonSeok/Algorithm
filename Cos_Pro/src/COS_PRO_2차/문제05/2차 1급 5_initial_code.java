@@ -1,10 +1,19 @@
+package COS_PRO_2차.문제05;
+
 // 다음과 같이 import를 사용할 수 있습니다.
 import java.util.*;
 
 class Solution {
     public int solution(int[] arr) {
         // 여기에 코드를 작성해주세요.
+        int cnt = 1;
         int answer = 0;
+        int maxCnt = 0;
+        for(int i = 0; i < arr.length - 1; i++){
+            cnt = arr[i] < arr[i+1] ? cnt + 1 : 1;
+            maxCnt = Math.max(cnt, maxCnt);
+        }
+        answer = maxCnt;
         return answer;
     }
 

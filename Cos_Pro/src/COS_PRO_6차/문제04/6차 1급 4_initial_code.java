@@ -1,3 +1,4 @@
+package COS_PRO_6차.문제04;
 class Solution {
     public int solution(int n, int mix, int k) {
         int answer = 0;

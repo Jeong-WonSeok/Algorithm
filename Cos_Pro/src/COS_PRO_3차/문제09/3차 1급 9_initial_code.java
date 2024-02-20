@@ -1,3 +1,4 @@
+package COS_PRO_3차.문제09;
 class Solution {
     public int solution(int[] revenue, int k) {
         int answer = 0;

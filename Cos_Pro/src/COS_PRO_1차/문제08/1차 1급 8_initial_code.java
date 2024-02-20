@@ -9,7 +9,7 @@ class Solution {
         public void setOrderList(String[] orderList);
         public int getTotalPrice();
     }
-    
+
     class Food{
         public String name;
         public int price;
@@ -18,11 +18,11 @@ class Solution {
             this.price = price;
         }
     }
-    
-    class PizzaStore @@@ {
+
+    class PizzaStore implements DeliveryStore {
         private ArrayList<Food> menuList;
         private ArrayList<String> orderList;
-        
+
         public PizzaStore(){
             //init menuList
             menuList = new ArrayList<Food>();
@@ -30,17 +30,17 @@ class Solution {
             int[] menuPrices = {11100, 12600, 13300, 21000, 19500};
             for(int i = 0; i < 5; i++)
                 menuList.add(new Food(menuNames[i], menuPrices[i]));
-            
+
             //init orderList
             orderList = new ArrayList<String>();
         }
-        
-        public @@@{
+
+        public void setOrderList(String[] orderList){
             for(int i = 0; i < orderList.length; i++)
                 this.orderList.add(orderList[i]);
         }
-        
-        public @@@{
+
+        public int getTotalPrice(){
             int totalPrice = 0;
             Iterator<String> iter = orderList.iterator();
             while (iter.hasNext()) {
@@ -52,23 +52,23 @@ class Solution {
             return totalPrice;
         }
     }
-    
+
     public int solution(String[] orderList) {
         DeliveryStore deliveryStore = new PizzaStore();
-        
+
         deliveryStore.setOrderList(orderList);
         int totalPrice = deliveryStore.getTotalPrice();
-        
+
         return totalPrice;
     }
-    
+
     // The following is main method to output testcase.
     public static void main(String[] args) {
         Solution sol = new Solution();
         String[] orderList = {"Cheese", "Pineapple", "Meatball"};
         int ret = sol.solution(orderList);
-        
-        // Press Run button to receive output. 
+
+        // Press Run button to receive output.
         System.out.println("Solution: return value of the method is " + ret + " .");
     }
 }

@@ -15,7 +15,7 @@ class Solution{
             else if(recordA[i] == func(recordB[i]))
                 cnt = cnt + 3;
             else
-                cnt = cnt - 1;
+                cnt = cnt == 0 ? cnt - 1 : cnt;
         }
         return cnt;
     }
