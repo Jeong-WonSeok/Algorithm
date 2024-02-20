@@ -5,6 +5,7 @@ class Solution {
     public long solution(long num) {
         // Write code here.
         long answer = 0;
+
         return answer;
     }
 

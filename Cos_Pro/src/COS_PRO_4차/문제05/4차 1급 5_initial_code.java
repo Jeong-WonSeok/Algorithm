@@ -1,15 +1,17 @@
+package COS_PRO_4차.문제05;
+
 class Solution {
     public String reverse(String number) {
         String reverseNumber = "";
-        for(int i = number.length()-1; i >= 0; i--)
-            @@@;
+//        for(int i = number.length()-1; i >= 0; i--)
+//            @@@;
         return reverseNumber;
     }
 
     public String solution(int n) {
         String answer = "";
         for(int i = 0; i < n; i++) {
-            answer += Integer.toString(@@@);
+//            answer += Integer.toString(@@@);
             answer = reverse(answer);
         }
         return answer;
