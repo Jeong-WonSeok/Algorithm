@@ -6,9 +6,6 @@ class Solution {
     public long solution(long num) {
         // Write code here.
         long answer = 0;
-<<<<<<< HEAD
-
-=======
         num++;
         int cnt = 0;
         while(num / 10 != 0){
@@ -20,7 +17,6 @@ class Solution {
             num /= 10;
             cnt++;
         }
->>>>>>> 25f00ad5b9ac28bb82a11868e915508cf99d0fe9
         return answer;
     }
 
