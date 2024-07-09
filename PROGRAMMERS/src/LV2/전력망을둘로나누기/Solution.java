@@ -1,3 +1,4 @@
+package LV2.전력망을둘로나누기;
 
 import java.util.*;
 //https://school.programmers.co.kr/learn/courses/30/lessons/86971
